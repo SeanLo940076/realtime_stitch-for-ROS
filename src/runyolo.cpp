@@ -6,7 +6,7 @@ RunYoloResult runyolo(
 ) {
     std::vector<Detection> output = inf.runInference(imputimage);
     int detections = output.size();
-    // std::cout << "Number of detections:" << detections << std::endl;
+    std::cout << "Number of detections:" << detections << std::endl;
     for (auto detection:output)
     {
         cv::Rect box = detection.box;
@@ -22,8 +22,8 @@ RunYoloResult runyolo(
 
         cv::rectangle(imputimage, textBox, color, cv::FILLED);
         cv::putText(imputimage, classString, cv::Point(box.x + 5, box.y - 10), cv::FONT_HERSHEY_DUPLEX, 1, cv::Scalar(0, 0, 0), 2, 0);
-        // std::cout << "物件：" << detection.className << " 信心度：" << std::to_string(detection.confidence) 
-        //             << " 左上右下位置： (" << box.x << ", " << box.y << "), (" << (box.x + box.width) << ", " << (box.y + box.height) << ")" << std::endl;
+        std::cout << "物件：" << detection.className << " 信心度：" << std::to_string(detection.confidence) 
+                    << " 左上右下位置： (" << box.x << ", " << box.y << "), (" << (box.x + box.width) << ", " << (box.y + box.height) << ")" << std::endl;
     }
     // for (int i = 0; i < detections; ++i)
     // {

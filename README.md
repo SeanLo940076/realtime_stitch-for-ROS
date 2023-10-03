@@ -2,7 +2,7 @@
 
 ## Demo
 
-![Demo Image](./images/Demo.png)
+![Demo Image](./images/Demo.gif)
 
 ## How to use
 

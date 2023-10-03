@@ -1,0 +1,29 @@
+img_names: []
+try_cuda: true            # 有用 但不多 warp exposure gc_color blender
+work_megapix: 1
+seam_megapix: 0.1
+compose_megapix: -1       # 不縮放 改天可測試 0.5
+conf_thresh: 1.0
+features_type: "surf"     # sift
+match_conf: 0.65
+matcher_type: "homography"
+estimator_type: "homography"
+ba_cost_func: "ray"
+ba_refine_mask: "xxxxx"
+do_wave_correct: true
+save_graph_to: "/home/sean/Desktop/stitching_realtime/Analyze_Data/Save_graph/matches_graph.dot"
+warp_type: "cylindrical"  # cylindrical, spherical, plane
+expos_comp_nr_feeds: 1
+expos_comp_nr_filtering: 2
+expos_comp_block_size: 32
+seam_find_type: "gc_colorgrad"              # gc_color, gc_colorgrad, dp_color, dp_colorgrad, no
+blend_strength: 7                           # 7, 3, 50
+range_width: -1
+save_show_root: "/home/sean/Desktop/stitching_realtime/Analyze_Data/image_buf/"
+yolo_path: "/home/sean/Desktop/stitching_realtime/source/"
+image_model_path: "/home/sean/Desktop/stitching_realtime/source/image_model/"
+image_model_number: "8500"
+video_path: "/home/sean/Desktop/NTUT_11_AVI/"
+# wave_correct: "horiz"                       # (horiz|vert)
+# expos_comp_type: "no"                       # (no|gain|gain_blocks|channels|channels_blocks)
+# blend_type: "multiband"                    # (no|feather|multiband)

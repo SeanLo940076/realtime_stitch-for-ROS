@@ -24,8 +24,8 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg) {
 
     // Run YOLO on this image
     // Assuming the runYolo function takes an OpenCV image and returns the processed image.
-    RunYoloResult runyolo(inf, imputimage)
-)
+    RunYoloResult yoloimage = runyolo(inf, imputimage);
+    output_msg = yoloimage.yoloresult;
 
     // Publish the result (if you want to)
     sensor_msgs::ImagePtr output_msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", result).toImageMsg();
@@ -33,9 +33,13 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg) {
 }
 
 int main(int argc, char** argv) {
+    std::string yolo_path = "/home/sean/Desktop/stitching_realtime/source/";
     ros::init(argc, argv, "Yolov8_node");
     ros::NodeHandle nh;
     image_transport::ImageTransport it(nh);
+
+    Inference inf(cv::samples::findFile(yolo_path + "/models/best.onnx"), cv::Size(2528, 320), // 記得改 // 2656, 320 // 7744, 832
+                  cv::samples::findFile(yolo_path + "/classes/classes.txt"), true);        // runOnGPU = true
 
     // Subscribing to the input image topic
     image_transport::Subscriber sub = it.subscribe("/panoramicimage", 1, imageCallback);

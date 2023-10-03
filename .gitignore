@@ -1,0 +1,4 @@
+# Ignore build folder
+build/
+Analyze_tool/
+.vscode/
